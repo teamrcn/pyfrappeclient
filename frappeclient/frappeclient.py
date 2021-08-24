@@ -144,10 +144,13 @@ class FrappeClient(object):
 			'doclist': json.dumps(doclist)
 		})
 
-	def insert_comment(self, doc):
+	def insert_comment(self, doctype, name, email, content):
 		return self.post_request({
 			"cmd": "frappe.desk.form.utils.add_comment",
-			"doc": json.dumps(doc)
+            'reference_doctype': doctype,
+            'reference_name': name,
+            'comment_email': email,
+            'content': content,
 		})
 
 	def assign_to(self, assign_to, doctype, name, description):
